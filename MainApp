@@ -1,0 +1,43 @@
+package edu.ucdenver.app;
+
+import edu.ucdenver.unversity.graduate;
+import edu.ucdenver.unversity.graduate;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+
+
+public class MainApp {
+public static void main(String[] args){
+Unversity unversity = new Unversity();
+
+unversity.addUndergraduate("John smith", LocalDate.of(1999, 5, 20 ));
+unversity.addUndergraduate("John smith", LocalDate.of(1999, 5, 20 ));
+unversity.addUndergraduate("John smith", LocalDate.of(1999, 5, 20 ));
+unversity.addMaster("John smith", LocalDate.of(1999, 5, 20 ));
+unversity.addMaster("John smith", LocalDate.of(1999, 5, 20 ));
+unversity.addPD("John smith", LocalDate.of(1999, 5, 20 ));
+
+unversity.addCouse("CSCI", 3920, "Advanced programming with java and python");
+unversity.addCouse("CSCI", 3800, "next generation cyber security and GAN");
+unversity.addCouse("MATH", 1500, "Algebra");
+
+System.out.println(">>>>>>>>>>>>>>>>>>>>>>>UNVERSITY<<<<<<<<<<<<<<<<<<");
+System.out.println(unversity);
+System.out.println();
+
+System.out.println(">>>>>>>>>>>>>>>>>>>>>>>UNVERSITY<<<<<<<<<<<<<<<<<<");
+System.out.println();
+
+System.out.println(">>>>>>>>>>>>>>>>>>>>>>>UNVERSITY<<<<<<<<<<<<<<<<<<");
+
+
+System.out.println(">>>>>>>>>>>>>>>>>>>>>>>UNVERSITY STUDENT<<<<<<<<<<<<<<<<<<");
+
+student.add(new Master(("Megual castro", LocalDate.of(1996,20)));
+for(Student s: student){
+System.out.println(s);
+}
+
+}
+}
