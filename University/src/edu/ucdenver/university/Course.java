@@ -1,5 +1,5 @@
 package edu.ucdenver.university;
-
+import java.io.Serializable;
 public class Course {
     private String subject; // CSCI
     private int number; //3920
