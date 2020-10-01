@@ -39,7 +39,31 @@ public class University{
     public void addUndergrad(String name, LocalDate dob){students.add(new Undergraduate(name,dob));}
     public void addMaster(String name, LocalDate dob){students.add(new Master(name,dob));}
     public void addPhD(String name, LocalDate dob, String topic){students.add(new PhD(name,dob,topic));}
+    public void enrollStudentToCourse(String name, String subject,int number)
+            throws IllegalArgumentException{
+        //make a variable to hold lowercase name so we dont have to call toLowerCase for each
+        //comparison
+        String name_uppercase = name.toUpperCase();
+        String subject_uppercase = subject.toUpperCase();
+        for (int i =0; i < this.students.size();i++){
+            if(name_uppercase.equals(students.get(i).getName().toLowerCase)) {
+                for(int j=0; j < courses.size();j++){
+                    if (subject_uppercase.equals(courses.get(j).getSubject().toUpperCase())){
+                        if (!(this.courses.get(j).getNumber() ==number))
+                        {
+                            throw new IllegalArgumentException(String.format("Unknown course number %d",number));
+                        }
+                        this.students.get(i).enrollTo(this.courses.get(j));
+                        this.courses.get(j).addStudentToCourse(this.students.get(i));
+                        return;
+                    }
 
+                }
+                throw new IllegalArgumentException(String.format("Unknown course subject %s",subject));
+            }
+        }
+        throw new IllegalArgumentException(String.format("Unknown student %s",name));
+    }
     public void addCourse(String subject,int number, String title) throws IllegalArgumentException{
         try{
             this.getCourse(subject,number);
