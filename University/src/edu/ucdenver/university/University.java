@@ -1,11 +1,13 @@
 package edu.ucdenver.university;
-
+import java.io.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class University{
+public class University implements Serializable {
     private ArrayList<Student> students;
     private ArrayList<Course> courses;
+
+    public static final String filename = "./university.ser";
 
     public University(){
         this.students = new ArrayList<>(100);
@@ -41,12 +43,12 @@ public class University{
     public void addPhD(String name, LocalDate dob, String topic){students.add(new PhD(name,dob,topic));}
     public void enrollStudentToCourse(String name, String subject,int number)
             throws IllegalArgumentException{
-        //make a variable to hold lowercase name so we dont have to call toLowerCase for each
-        //comparison
+//make a variable to hold lowercase name so we dont have to call toLowerCase for each
+//comparison
         String name_uppercase = name.toUpperCase();
         String subject_uppercase = subject.toUpperCase();
         for (int i =0; i < this.students.size();i++){
-            if(name_uppercase.equals(students.get(i).getName().toLowerCase)) {
+            if(name_uppercase.equals(students.get(i).getName().toUpperCase())) {
                 for(int j=0; j < courses.size();j++){
                     if (subject_uppercase.equals(courses.get(j).getSubject().toUpperCase())){
                         if (!(this.courses.get(j).getNumber() ==number))
@@ -64,6 +66,9 @@ public class University{
         }
         throw new IllegalArgumentException(String.format("Unknown student %s",name));
     }
+
+
+
     public void addCourse(String subject,int number, String title) throws IllegalArgumentException{
         try{
             this.getCourse(subject,number);
@@ -81,4 +86,59 @@ public class University{
     public ArrayList<Course> getCourses(){
         return courses;
     }
+
+
+
+/////////////////////////////////////////////////////////////////////////////////
+
+    public void saveToFile(){
+        String filename = "./university.ser";
+        ObjectOutputStream oos = null;
+
+        try{
+            oos = new ObjectOutputStream(new FileOutputStream(filename));
+            oos.writeObject(this);
+        }
+        catch(IOException ioe){
+            ioe.printStackTrace();
+        }
+        finally{
+            if(oos != null){
+                try{
+                    oos.close();
+                }
+                catch(IOException ioe){
+                    ioe.printStackTrace();
+                }
+            }
+
+        }
+
+    }
+
+
+    public static University loadFromFile(){
+        ObjectInputStream ois = null;
+        University university = null;
+
+        try{
+            ois = new ObjectInputStream(new FileInputStream(University.filename));
+            university = (University) ois.readObject();
+        }
+        catch (Exception ioe){
+            e.printStackTrace();
+            university = new University();
+
+        }
+        finally{
+            if (ois != null){
+                try{ois.close();}
+                catch (IOException ioe){ioe.printStackTrace();}
+            }
+        }
+
+        return university;
+
+    }
+
 }
