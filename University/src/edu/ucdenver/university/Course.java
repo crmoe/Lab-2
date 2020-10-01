@@ -1,15 +1,19 @@
 package edu.ucdenver.university;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Course implements Serializable{
     private String subject; // CSCI
     private int number; //3920
     private String title; //Adv. Prog.
-
+    private ArrayList<Student> students;
     public Course(String subject, int number, String title){
         this.subject = subject.toUpperCase();
         this.number = number;
         this.title = title;
-
+        this.students = new ArrayList<>();
+        }
     }
     public String toString(){
         return String.format("%s%04d - %s", this.subject, this.number, this.title);
@@ -29,9 +33,9 @@ public class Course implements Serializable{
             this.students.add(student);
         }
     }
-    public List<Student> getEnrolledStudents() {
+    public ArrayList<Student> getEnrolledStudents() {
         return this.students;
     }
 
-   
+
 }
