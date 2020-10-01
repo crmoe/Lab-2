@@ -24,4 +24,12 @@ public class Course {
     public String getTitle(){
         return title;
     }
+    public void addStudentToCourse(Student student) {
+        if (!this.students.contains(student)){
+            this.students.add(student);
+        }
+    }
+    public List<Student> getEnrolledStudents() {
+        return this.students;
+    }
 }
