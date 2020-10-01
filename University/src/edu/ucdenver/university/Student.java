@@ -21,6 +21,11 @@ public class Student{
                 this.getEmail(), "Grad Student");
 
     }
+    public void enrollTo(Course course){
+        if (!this.courses.contains(course)){
+            this.courses.add(course);
+        }
+    }
     public String getName(){ return name; }
     public void setName(String name) { this.name = name; }
     public LocalDate getDob() { return dob; }
