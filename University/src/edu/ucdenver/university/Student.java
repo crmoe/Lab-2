@@ -1,9 +1,10 @@
 package edu.ucdenver.university;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 
-public class Student{
+public abstract class Student implements Serializable {
 
     private String name;
     private LocalDate dob;
@@ -18,14 +19,10 @@ public class Student{
     @Override
     public String toString(){
         return String.format("%-20s - %s - %-50s - Standing: %s", this.getName(), this.getDob(),
-                this.getEmail(), "Grad Student");
+                this.getEmail(), this.getStanding());
 
     }
-    public void enrollTo(Course course){
-        if (!this.courses.contains(course)){
-            this.courses.add(course);
-        }
-    }
+    public abstract String getStanding();
     public String getName(){ return name; }
     public void setName(String name) { this.name = name; }
     public LocalDate getDob() { return dob; }
@@ -34,3 +31,4 @@ public class Student{
     public void setEmail(String email) { this.email = email; }
 
 }
+
