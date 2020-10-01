@@ -10,9 +10,8 @@ public class Graduate extends Student{
     }
 
     @Override
-    public String toString() {
-        return String.format("%-20s - %s - %-50s - Standing: %s", this.getName(), this.getDob(),
-                this.getEmail(), "Grad Student");
+    public String getStanding(){
+        return "edu.ucdenver.university.Undergraduate";
 
-    }
+    };
 }
