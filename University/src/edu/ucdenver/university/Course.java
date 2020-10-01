@@ -1,6 +1,6 @@
 package edu.ucdenver.university;
 import java.io.Serializable;
-public class Course {
+public class Course implements Serializable{
     private String subject; // CSCI
     private int number; //3920
     private String title; //Adv. Prog.
