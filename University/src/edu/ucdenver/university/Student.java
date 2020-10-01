@@ -29,6 +29,11 @@ public abstract class Student implements Serializable {
     public void setDob(LocalDate dob) { this.dob = dob; }
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email; }
+    public void enrollTo(Course course){
+        if (!this.courses.contains(course)){
+            this.courses.add(course);
+        }
+    }
 
 }
 
