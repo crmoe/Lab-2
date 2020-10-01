@@ -1,43 +1,25 @@
 package edu.ucdenver.app;
-
 import edu.ucdenver.university.*;
+import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+public class MainApp extends Application{
 
-import java.time.LocalDate;
-
-public class MainApp{
-
+    @Override
+    public void start(Stage primaryStage) throws Exception{
+        Parent root = FXMLLoader.load(getClass().getResource("application.fxml"));
+        primaryStage.setTitle("University Application");
+        primaryStage.setScene(new Scene(root,1080,720));
+        primaryStage.show();
+        primaryStage.setOnCloseRequest(e->{
+            Platform.exit();
+            System.exit(0);
+        });
+    }
     public static void main(String[] args){
-        University university = new University();
-
-
-        university.addUndergrad("John Smith", LocalDate.of(1999,5,20));
-        university.addUndergrad("Alice Smith", LocalDate.of(2000,6,21));
-        university.addUndergrad("Dan Smith", LocalDate.of(2001,7,22));
-        university.addMaster("John Doe", LocalDate.of(1997,8,10));
-        university.addMaster("Alice Doe", LocalDate.of(1998,9,11));
-        university.addMaster("Jane Doe", LocalDate.of(1999,10,12));
-        university.addPhD("Javier Pastorino", LocalDate.of(1999,5,20), "Artificial Intelligence");
-        university.addPhD("Ellie Miller", LocalDate.of(1999,5,20), "Forensics");
-
-        university.addCourse("CSCI", 3920,"Advanced Programming with Java and Python");
-        university.addCourse("CSCI",3800,"NextGen CyberThreats and GAN");
-        university.addCourse("MATH",1500,"Algebra");
-
-
-        System.out.println(">>>>>>>>>>>>>>>>>> UNIVERSITY <<<<<<<<<<<<<<<");
-        System.out.println(university);
-        System.out.println();
-
-        System.out.println(">>>>>>>>>> UNIVERSITY STUDENTS <<<<<<<<<<<<");
-        for (Student s: university.getStudents()){
-            System.out.println(s);
-        }
-        System.out.println();
-
-        System.out.println(">>>>>>>>>>>> UNIVERSITY COURSES <<<<<<<<<<<<<<<");
-        for (Course c: university.getCourses()){
-            System.out.println(c);
-        }
-        System.out.println();
+    launch(args);
     }
 }
