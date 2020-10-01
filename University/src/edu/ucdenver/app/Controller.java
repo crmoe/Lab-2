@@ -33,6 +33,21 @@ public class Controller {
         this.selCourseSubject.setItems(FXCollections.observableArrayList("CSCI","MATH"));
         this.lstStudent.setItems(FXCollections.observableArrayList(university.getStudents()));
         this.lstCourses.setItems(FXCollections.observableArrayList(university.getCourses()));
+        this.lstCourses.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Course>() {
+            @Override
+            public void changed(ObservableValue<? extends Course> observable, Course oldValue, Course newValue) {
+                for(int i =0; i<university.getCourses().size();i++)
+                {
+                    if (university.getCourses().get(i).getSubject().toUpperCase().equals(oldValue.getSubject().toUpperCase()) && oldValue.getNumber() == oldValue.getNumber()){
+                        university.getCourses().set(i,newValue);
+                        break;
+                    }
+                }
+                //I am unsure if this function needs to be called. Test it and if it doesnt work uncomment
+                //the following line.
+                //listCoursesUpdate(Event.F5);
+            }
+        });
     }
     private void cleanAddStudent(){
         this.txtStudentName.setText("");
