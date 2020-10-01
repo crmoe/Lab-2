@@ -2,6 +2,7 @@ package edu.ucdenver.university;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 
 public abstract class Student implements Serializable {
@@ -9,7 +10,7 @@ public abstract class Student implements Serializable {
     private String name;
     private LocalDate dob;
     private String email;
-
+    private ArrayList<Course> courses;
     public Student(String name, LocalDate dob){
         this.name = name;
         this.dob = dob;
@@ -36,4 +37,3 @@ public abstract class Student implements Serializable {
     }
 
 }
-
