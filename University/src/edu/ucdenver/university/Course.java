@@ -33,7 +33,5 @@ public class Course implements Serializable{
         return this.students;
     }
 
-    public List<Student> getEnrolledStudents() {
-        return this.students;
-    }
+   
 }
